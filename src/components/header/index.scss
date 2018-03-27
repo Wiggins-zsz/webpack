@@ -1,0 +1,21 @@
+$baseSize: 14px;
+$color: #666;
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.header {
+	color: $color;
+	font-size: $baseSize;
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+	background: #eee;
+	border-radius: 10px;
+
+	&-text {
+		letter-spacing: 3px;
+	}
+}

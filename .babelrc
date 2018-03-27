@@ -1,0 +1,21 @@
+{
+	"plugins": [
+		[
+			"transform-runtime",
+			{
+				polifill: false
+			}
+		]
+	],
+	"presets": [
+		[
+			"es2015",
+			{
+				"modules": false
+			}
+		],
+		"stage-2",
+		"flow",
+		"react"
+	]
+}
