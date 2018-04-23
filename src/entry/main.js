@@ -1,21 +1,20 @@
-import React from 'react'
-import ReactDom from 'react-dom'
+import React from 'react';
+import ReactDom from 'react-dom';
+import Basic from '../routes/index.js';
 
-import Header from '../components/header/index.js'
+// class Base extends React.Component {
+// 	constructor(props) {
+// 		super(props);
+// 	}
 
-class Base extends React.Component {
-	constructor(props) {
-		super(props);
-	}
+// 	render() {
+// 		return (
+// 			<div>
+// 				<Header title="这是标题" />
+// 				<a href="./login.html">去登陆页</a>
+// 			</div>
+// 		)
+// 	}
+// }
 
-	render() {
-		return (
-			<div>
-				<Header title="这是标题" />
-				<a href="./login.html">去登陆页</a>
-			</div>
-		)
-	}
-}
-
-ReactDom.render(<Base />, document.getElementById('app'));
+ReactDom.render(<Basic />, document.getElementById('app'));

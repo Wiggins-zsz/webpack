@@ -9,8 +9,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
  module.exports = {
 	entry: {
-		a: './src/entry/main.js', 
-		b: './src/entry/login.js'
+		a: './src/entry/main.js'
+		// b: './src/entry/login.js'
 	},
 	output: {
 		filename: '[name]_[hash:8].js',
@@ -85,25 +85,25 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 			filename: 'index.html',
 			chunks: ['a']
 		}),
-		new HtmlWebpackPlugin({
-			template: './index.html',
-			filename: 'login.html',
-			chunks: ['b']
-		}),
-		new UglifyJsPlugin({
-			uglifyOptions: {
-				compress: {
-					warnings: false,
-					drop_console: true,
-					collapse_vars: true,
-					reduce_vars: true
-				},
-				output: {
-					beautify: false,
-					comments: false
-				}
-			}
-		})
+		// new HtmlWebpackPlugin({
+		// 	template: './index.html',
+		// 	filename: 'login.html',
+		// 	chunks: ['b']
+		// }),
+		// new UglifyJsPlugin({
+		// 	uglifyOptions: {
+		// 		compress: {
+		// 			warnings: false,
+		// 			drop_console: true,
+		// 			collapse_vars: true,
+		// 			reduce_vars: true
+		// 		},
+		// 		output: {
+		// 			beautify: false,
+		// 			comments: false
+		// 		}
+		// 	}
+		// })
 	]
 }
 
