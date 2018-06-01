@@ -3,6 +3,13 @@ import React from 'react';
 import ReactDom from 'react-dom'
 import ProTypes from 'prop-types';
 import Form from '../Form/index.js';
+import {
+    BrowserRouter as Router,
+    Route,
+    Redirect,
+    Link,
+    Switch
+} from 'react-router-dom';
 
 class Home extends React.Component {
 	constructor(props) {
@@ -36,6 +43,9 @@ const InputText = (props) => {
 	return (
 		<div>
 			<input placeholder="被引用的组件" ref={props.inputDom} />
+			<div>
+				<Link to="/detail/56">去详情页</Link>
+			</div>
 		</div>
 	)
 }

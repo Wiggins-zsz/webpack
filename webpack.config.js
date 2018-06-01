@@ -14,7 +14,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 	},
 	output: {
 		filename: '[name]_[hash:8].js',
-		path: path.resolve(__dirname, './dist')
+		path: path.resolve(__dirname, './dist'),
+		publicPath: '/'
 		// chunkFilename: 'bundle_chunk_[name].js'
 	},
 	mode: 'development',
@@ -70,7 +71,16 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 	},
 	devServer: {
 		open: true,
-		compress: false
+		compress: false,
+		historyApiFallback: true,
+		proxy: {
+		    '/': {
+		        bypass: function (req, res, proxyOptions) {
+		            console.log('Skipping proxy for browser request.')
+		            return '/index.html'
+		        }
+		    }
+		}
 	},
 	devtool: 'source-map',
 	externals: {jquery: 'jQuery'},
@@ -84,7 +94,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 			template: './index.html',
 			filename: 'index.html',
 			chunks: ['a']
-		}),
+		})
 		// new HtmlWebpackPlugin({
 		// 	template: './index.html',
 		// 	filename: 'login.html',
