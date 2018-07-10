@@ -8,6 +8,7 @@ import {
     Switch,
     NavLink
 } from 'react-router-dom';
+import Test from '../test/index.js'
 
 const alerts = () => {
 	console.log('enter list page');
@@ -28,6 +29,9 @@ class Detail extends React.Component {
 					<div className="content">
 						<div className="tab">
 							<NavLink exact strict to="/topics" isActive={() =>false} activeStyle={{color: 'red'}} activeClassName="selected">列表</NavLink>
+							<div>
+								<Test />
+							</div>
 						</div>
 						<Switch>
 							<Redirect to="/ccc" from="/topics"></Redirect>

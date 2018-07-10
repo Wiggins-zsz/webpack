@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import { connect } from 'react-redux';
 import './index.scss';
 import {
     BrowserRouter as Router,
@@ -11,7 +12,7 @@ import {
 import Home from '../components/Home/index.js'
 import Detail from '../components/Detail/index.js';
 
-const Basic = () => {
+const Basic = (props) => {
 	const confirms = () => {
 		console.log('location.href:', location.href);
 	}
@@ -35,4 +36,4 @@ const Basic = () => {
 	)
 }
 
-export default Basic;
+export default connect()(Basic);

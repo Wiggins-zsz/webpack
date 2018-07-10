@@ -1,20 +1,15 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import Basic from '../routes/index.js';
+import { Provider } from 'react-redux';
+import configureStore from '../redux/store.js';
+import todo from '../redux/reducer.js'
 
-// class Base extends React.Component {
-// 	constructor(props) {
-// 		super(props);
-// 	}
+let store = configureStore();
 
-// 	render() {
-// 		return (
-// 			<div>
-// 				<Header title="这是标题" />
-// 				<a href="./login.html">去登陆页</a>
-// 			</div>
-// 		)
-// 	}
-// }
 
-ReactDom.render(<Basic />, document.getElementById('app'));
+ReactDom.render(
+	<Provider store={store}>
+		<Basic />
+	</Provider>,
+	document.getElementById('app'));
