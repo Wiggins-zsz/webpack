@@ -9,7 +9,7 @@ export default class Pager extends React.Component {
         super(props);
 
         this.state = {
-            take: 10
+            take: 20
         }
 
         this.handleTakeChange = this.handleTakeChange.bind(this);
