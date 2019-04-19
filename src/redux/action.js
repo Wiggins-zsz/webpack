@@ -24,6 +24,7 @@ export function sub(text) {
 }
 
 export function muti(text) {
+	debugger;
 	return {
 		type: MUTI,
 		text

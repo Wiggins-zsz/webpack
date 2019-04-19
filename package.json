@@ -8,8 +8,8 @@
     "flow": "flow",
     "tsc": "tsc",
     "start": "webpack-dev-server --hot --inline",
-    "dev": "webpack",
-    "pro": "NODE_ENV=production webpack"
+    "build:dev": "webpack",
+    "build:pro": "NODE_ENV=production webpack"
   },
   "keywords": [],
   "author": "",
@@ -34,8 +34,8 @@
     "postcss-cssnext": "^3.1.0",
     "postcss-loader": "^2.1.2",
     "prop-types": "^15.6.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",

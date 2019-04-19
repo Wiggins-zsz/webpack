@@ -1,0 +1,17 @@
+.img-wrap {
+	width: 100%;
+	padding: 0 5px;
+
+	.img-item {
+		width: 49%;
+		height: 100px;
+		display: inline-block;
+		margin-right: 1%;
+		text-align: center;
+		cursor: pointer;
+
+		img {
+			width: 100%;
+		}
+	}
+}

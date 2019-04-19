@@ -7,7 +7,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 // const DefinePlugin = require('webpack/lib/DefinePlugin');
 // const { WebPlugin } = require('web-webpack-plugin');
 
- module.exports = {
+ let config = {
 	entry: {
 		a: './src/entry/main.js'
 		// b: './src/entry/login.js'
@@ -20,7 +20,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 	},
 	mode: 'development',
 	resolve: {
-		extensions: ['.js', '.ts', '.json'],
+		extensions: ['.js', '.ts', '.json', '.mp3'],
 		// modules: [],
 		enforceExtension: false
 	},
@@ -39,7 +39,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 		  //       })
 			},
 			{
-				test: /\.js$/,
+				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
 				use: {
 					loader: 'babel-loader'
@@ -56,14 +56,28 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 				use: ['style-loader', 'css-loader', 'sass-loader']
 			},
 			{
-				test: /\.(png | jpe?g | svg)$/,
+				test: /\.(png|jpe?g|svg)$/,
 				use: [
 					{
 						loader: 'url-loader',
 						options: {
-							limit: 1024 * 30,
+							limit: 1024 * 8,
+							name: '[name].[ext]?[hash]',
+                        	outputPath: 'images/',
 							fallback: 'file-loader'
 						},
+					}
+				]
+			},
+			{
+				test: /\.mp3$/,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							name: '[name]',
+							outputPath: 'audio/'
+						}
 					}
 				]
 			}
@@ -95,30 +109,39 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 			filename: 'index.html',
 			chunks: ['a']
 		})
+        // new webpack.DefinePlugin({
+        //     'process.env': {
+        //         NODE_ENV: JSON.stringify('production')
+        //     }
+        // })
 		// new HtmlWebpackPlugin({
 		// 	template: './index.html',
 		// 	filename: 'login.html',
 		// 	chunks: ['b']
 		// }),
-		// new UglifyJsPlugin({
-		// 	uglifyOptions: {
-		// 		compress: {
-		// 			warnings: false,
-		// 			drop_console: true,
-		// 			collapse_vars: true,
-		// 			reduce_vars: true
-		// 		},
-		// 		output: {
-		// 			beautify: false,
-		// 			comments: false
-		// 		}
-		// 	}
-		// })
 	]
 }
 
 if(process.env.NODE_ENV == 'production') {
-	console.log('production')
+	console.log('enviroment is production');
+	config.plugins.push(
+        new UglifyJsPlugin({
+            uglifyOptions: {
+                compress: {
+                    warnings: false,
+                    drop_console: true,
+                    collapse_vars: true,
+                    reduce_vars: true
+                },
+                output: {
+                    beautify: false,
+                    comments: false
+                }
+            }
+        })
+	)
 }else {
-	console.log('dev')
+    console.log('enviroment is dev');
 }
+
+module.exports = config;
